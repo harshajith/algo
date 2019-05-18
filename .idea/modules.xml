@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/algo.iml" filepath="$PROJECT_DIR$/.idea/modules/algo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/algo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/algo_main.iml" group="algo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/algo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/algo_test.iml" group="algo" />
+    </modules>
+  </component>
+</project>
