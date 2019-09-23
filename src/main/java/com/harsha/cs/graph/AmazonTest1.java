@@ -4,6 +4,12 @@ import com.harsha.cs.treechallenge.TreeNode;
 
 import java.util.*;
 
+
+/**
+ * Find the first two deliveries based on minimum cost of the distance
+ * input: {1,2}, {3,4}, {1,-1},{5,6}, {1,1}
+ * output:
+ */
 public class AmazonTest1 {
 
     static Map<Node, List<Node>> graph = new HashMap<>();
