@@ -5,10 +5,6 @@ group 'algo-training'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-plugins {
-    id 'com.google.cloud.tools.jib' version '0.9.11'
-}
-
 sourceCompatibility = 1.8
 
 repositories {

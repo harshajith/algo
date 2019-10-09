@@ -64,7 +64,6 @@ public class MST {
     // between two vertices
     void addEdge(Graph graph, int src, int dest, int weight)
     {
-
         node1 node0 = new node1(dest, weight);
         node1 node = new node1(src, weight);
         graph.adj[src].addLast(node0);
@@ -78,27 +77,23 @@ public class MST {
         // Whether a vertex is in PriorityQueue or not
         Boolean[] mstset = new Boolean[graph.V];
         node[] e = new node[graph.V];
-
         // Stores the parents of a vertex
         int[] parent = new int[graph.V];
 
-        for (int o = 0; o < graph.V; o++)
-            e[o] = new node();
 
         for (int o = 0; o < graph.V; o++) {
-
             // Initialize to false
             mstset[o] = false;
-
+            node n = new node();
             // Initialize key values to infinity
-            e[o].key = Integer.MAX_VALUE;
-            e[o].vertex = o;
+            n.key = Integer.MAX_VALUE;
+            n.vertex = o;
+            e[o] = n;
             parent[o] = -1;
         }
 
         // Include the source vertex in mstset
         mstset[0] = true;
-
         // Set key value to 0
         // so that it is extracted first
         // out of PriorityQueue
@@ -122,12 +117,7 @@ public class MST {
             // For all adjacent vertex of the extracted vertex V
             for (node1 iterator : graph.adj[node0.vertex]) {
 
-                // If V is in queue
                 if (mstset[iterator.dest] == false) {
-                    // If the key value of the adjacent vertex is
-                    // more than the extracted key
-                    // update the key value of adjacent vertex
-                    // to update first remove and add the updated vertex
                     if (e[iterator.dest].key > iterator.weight) {
                         queue.remove(e[iterator.dest]);
                         e[iterator.dest].key = iterator.weight;

@@ -1,5 +1,7 @@
 package aws.s3;
 
+import com.sun.org.apache.xpath.internal.operations.Number;
+
 import java.util.LinkedList;
 
 /**
@@ -40,10 +42,10 @@ public class NumberOfIslands {
         C = grid[0].length;
         visited = new boolean[R][C];
 
-        for(int i=0; i<grid.length; i++){
-            for(int j=i; j<grid[i].length; j++){
+        for(int i=0; i<R; i++){
+            for(int j=0; j<C; j++){
                 if(visited[i][j] == false){
-                    if(grid[i][j] == 1){
+                    if(grid[i][j] == '1'){
                         traveseForNeighbours(i, j);
                         islands++;
                     }
@@ -78,7 +80,7 @@ public class NumberOfIslands {
 
 
             if(rr < 0 || cc < 0) continue; // less than grid row columns
-            if(rr > R || cc > C) continue; // greater than grid row columns
+            if(rr >= R || cc >= C) continue; // greater than grid row columns
             if(visited[rr][cc] == true) continue; // already visited
             if(grid[rr][cc] == '0') continue; // water
 
@@ -90,5 +92,45 @@ public class NumberOfIslands {
 
     public static void main(String[] args){
 
+        char[][] grid = new char[6][5];
+        grid[0][0] = '1';
+        grid[0][1] = '1';
+        grid[0][2] = '0';
+        grid[0][3] = '0';
+        grid[0][4] = '0';
+
+        grid[1][0] = '1';
+        grid[1][1] = '1';
+        grid[1][2] = '0';
+        grid[1][3] = '0';
+        grid[1][4] = '0';
+
+        grid[2][0] = '0';
+        grid[2][1] = '0';
+        grid[2][2] = '1';
+        grid[2][3] = '0';
+        grid[2][4] = '0';
+
+        grid[3][0] = '0';
+        grid[3][1] = '0';
+        grid[3][2] = '0';
+        grid[3][3] = '1';
+        grid[3][4] = '1';
+
+        grid[4][0] = '0';
+        grid[4][1] = '0';
+        grid[4][2] = '1';
+        grid[4][3] = '0';
+        grid[4][4] = '0';
+
+        grid[5][0] = '0';
+        grid[5][1] = '0';
+        grid[5][2] = '0';
+        grid[5][3] = '1';
+        grid[5][4] = '1';
+
+        NumberOfIslands islands = new NumberOfIslands();
+        int x = islands.numIslands(grid);
+        System.out.println(x);
     }
 }
