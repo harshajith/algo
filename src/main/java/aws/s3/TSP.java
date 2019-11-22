@@ -48,28 +48,23 @@ public class TSP {
         LinkedList<Node> queue = new LinkedList<>();
         queue.add(adjNodes.first()); // lowest value
 
-//        graph.get(adjNodes.first().id).remove(new Node(0, adjNodes.first().weight)); // remove src from adjancent's adjacents.
-//
         while(!queue.isEmpty()){
-
-            Node node = queue.poll();
+            Node node = queue.poll(); // give the shortest node, greedily
             if(!path.contains(node.id)){
                 path.add(node.id);
 
                 TreeSet<Node> neighbours = graph.get(node.id);
 
-                for(Integer i: path){
+                for(Integer i: path){ // remove the current node link from neighbours adjacent nodes, as we already put it in path.
                     if(i != node.id){
                         neighbours.remove(new Node(i, getWeight(node.id, i)));
                     }
                 }
 
-                if(!graph.get(node.id).isEmpty() && path.size() != graph.size()){
-                    queue.add(graph.get(node.id).first());
+                if(!neighbours.isEmpty() && path.size() != graph.size()){
+                    queue.add(neighbours.first());
                 }
             }
-
-
         }
         return path;
     }

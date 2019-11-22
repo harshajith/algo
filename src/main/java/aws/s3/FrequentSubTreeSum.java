@@ -61,7 +61,7 @@ public class FrequentSubTreeSum {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        while(!queue.isEmpty()){
+        while(!queue.isEmpty()){ // O(n)
             TreeNode node = queue.poll();
             int subtreeSum = sum(node);
             if(map.get(subtreeSum) != null){
@@ -78,33 +78,31 @@ public class FrequentSubTreeSum {
             }
         }
 
-        Map<Integer, Integer> sortedMap = map.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() { // nlog(n)
+            @Override
+            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
 
 
         List<Integer> result = new ArrayList<>();
-        int freq = -1;
-        int sum = -1;
-        while(sortedMap.size() > 0){
-            Map.Entry<Integer, Integer> entry = sortedMap.get(sortedMap.keySet().)
-            entry.getKey();
-            if(freq == -1){
-                result.add(entry.getValue());
-                freq = entry.getKey();
+
+        int highestFrequency = -1;
+        for(Map.Entry<Integer, Integer> entry: list){ // O(n)
+            if(highestFrequency == -1){
+                result.add(entry.getKey());
+                highestFrequency = entry.getValue();
             }else {
-                if(freq == entry.getKey()){ // tie found
-                    result.add(entry.getValue());
+                if(highestFrequency == entry.getValue()){
+                    result.add(entry.getKey());
                 }
             }
         }
 
-
-        int[] arr = result.stream().mapToInt(i -> i).toArray();
+        int[] arr = result.stream().mapToInt(i->i).toArray();
         return arr;
 
     }

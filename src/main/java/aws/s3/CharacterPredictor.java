@@ -10,6 +10,9 @@ public class CharacterPredictor {
 
     private void createGraph(char[] input){
 
+        /**
+         * O(n)
+         */
         for(int i=0; i<input.length; i++){
             char newChar = input[i];
             if(i>0){
@@ -37,13 +40,16 @@ public class CharacterPredictor {
 
     private char predictNextLetter(char in){
         Map<Character, Integer> map = graph.get(in);
-        TreeMap<Integer, Character> treeMap = new TreeMap<>();
-        for(Character key: map.keySet()){
-            int count = map.get(key);
-            treeMap.put(count, key);
-        }
 
-        char possibleNextChar = treeMap.get(treeMap.lastKey());
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                return o1.getValue() - o2.getValue();
+            }
+        });
+
+        char possibleNextChar = list.get(0).getKey();
         return possibleNextChar;
     }
 
