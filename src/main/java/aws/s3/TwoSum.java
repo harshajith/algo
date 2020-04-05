@@ -20,8 +20,6 @@ public class TwoSum {
                 set.add(current);
             }
         }
-
-
     }
 
     public static void main(String[] args){

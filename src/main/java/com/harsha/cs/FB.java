@@ -3,12 +3,7 @@ package com.harsha.cs;
 public class FB {
 
     public static void main(String[] args) {
-        int[] a = new int[5];
-        a[0] = 0;
-        a[1] = 3;
-        a[2] = 0;
-        a[3] = 6;
-        a[4] = 0;
+        int[] a = new int[]{1,1,1};
 
         rearrangeArray(a);
         for(int k=0; k < a.length; k++){

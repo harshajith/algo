@@ -2,8 +2,6 @@ package aws.s3;
 
 import java.util.*;
 
-import static jdk.vm.ci.meta.JavaKind.Char;
-
 public class CharacterPredictor {
 
     Map<Character, Map<Character, Integer>> graph = new HashMap<>();

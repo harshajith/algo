@@ -1,7 +1,5 @@
 package aws.s3;
 
-import com.sun.org.apache.xpath.internal.operations.Number;
-
 import java.util.LinkedList;
 
 /**

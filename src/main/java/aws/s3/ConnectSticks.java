@@ -1,10 +1,7 @@
 package aws.s3;
 
 
-import sun.awt.image.ImageWatched;
-
 import java.util.*;
-import java.util.LinkedList;
 
 /**
  * You have some sticks with positive integer lengths.
