@@ -4,7 +4,6 @@ import java.util.HashSet;
 
 public class HappyNumber {
 
-
     public void printInSequence(int n){
 
         int current = n;
