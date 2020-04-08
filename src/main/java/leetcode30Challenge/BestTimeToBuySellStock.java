@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode30Challenge;
 
 /**
  * 121. Best Time to Buy and Sell Stock
