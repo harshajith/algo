@@ -41,7 +41,6 @@ public class MiddleLinkedList {
             if(length > 100) throw new RuntimeException();
             current = current.next;
         }
-
         int mid = length/2;
         int currentPosition = 0;
         ListNode result = null;
@@ -99,7 +98,6 @@ public class MiddleLinkedList {
         while (listNode != null){
             System.out.println(listNode.val);
             listNode = listNode.next;
-
         }
     }
 
