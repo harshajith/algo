@@ -93,6 +93,7 @@ public class MiddleLinkedList {
         l5.next = l6;
         l6.next = null;
 
+
         MiddleLinkedList middleLinkedList = new MiddleLinkedList();
         ListNode listNode = middleLinkedList.middleNode(l1);
         while (listNode != null){
