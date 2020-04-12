@@ -2,7 +2,8 @@ package leetcode;
 
 
 /**
- *
+ * Binary Tree Max Height
+ * ======================
  */
 public class MaxDepthOfBinaryTree {
 
@@ -22,20 +23,11 @@ public class MaxDepthOfBinaryTree {
     static int findDepth(Node node){
         if(node == null){
             return 0;
-        }
-
-        if(node.left == null && node.right==null){
-            return 1;
-        }
-
-        int leftHeight = 1 + findDepth(node.left);
-        int rightHeight = 1 + findDepth(node.right);
-
-        if(leftHeight > rightHeight){
-            return leftHeight;
         }else {
-            return rightHeight;
+            return 1 + Math.max(findDepth(node.left), findDepth(node.right));
         }
+
+
     }
 
 
@@ -46,8 +38,9 @@ public class MaxDepthOfBinaryTree {
         Node n4 = new Node(6);
 
         n1.left = n2;
-        n3.left = n4;
         n1.right = n3;
+        n3.left = n4;
+
 
         System.out.println(findDepth(n1));
     }
