@@ -41,8 +41,7 @@ public class BFSWithAllPathsToDestination {
 
     // A utility function to add an edge in an
     // undirected graph
-    static void addEdge(ArrayList<ArrayList<Integer>> adj,
-                        int u, int v)
+    static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v)
     {
         adj.get(u).add(v);
         adj.get(v).add(u);
@@ -54,11 +53,10 @@ public class BFSWithAllPathsToDestination {
     {
         // Creating a graph with 5 vertices
         int V = 5;
-        ArrayList<ArrayList<Integer> > adj
-                = new ArrayList<ArrayList<Integer> >(V);
+        ArrayList<ArrayList<Integer> > adj  = new ArrayList<>(V);
 
         for (int i = 0; i < V; i++)
-            adj.add(new ArrayList<Integer>());
+            adj.add(new ArrayList<>());
 
         // Adding edges one by one
         addEdge(adj, 0, 1);
