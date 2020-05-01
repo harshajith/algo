@@ -1,4 +1,4 @@
-import leetcode30Challenge.StringShifts;
+import leetcodeApril.StringShifts;
 import org.junit.Before;
 import org.junit.Test;
 

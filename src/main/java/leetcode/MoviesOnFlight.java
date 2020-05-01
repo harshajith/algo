@@ -37,7 +37,6 @@ public class MoviesOnFlight {
         }
 
         Arrays.sort(input);
-        int sum = Integer.MIN_VALUE;
         int first = -1;
         int last = -1;
 
@@ -49,9 +48,6 @@ public class MoviesOnFlight {
 
             int total = a+b;
             if(total <= d-30) {
-                if(total > sum){
-                    sum = total;
-                }
                 first = i++;
                 last = j;
             }else {

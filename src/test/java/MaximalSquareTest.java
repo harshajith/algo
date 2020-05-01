@@ -1,4 +1,4 @@
-import leetcode30Challenge.MaximalSquare;
+import leetcodeApril.MaximalSquare;
 import org.junit.Test;
 
 public class MaximalSquareTest {
