@@ -1,4 +1,4 @@
-import leetcodeApril.BinaryTreeMaxPathSum;
+import leetcode.april.BinaryTreeMaxPathSum;
 import org.junit.Before;
 import org.junit.Test;
 

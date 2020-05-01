@@ -1,8 +1,8 @@
 
-import leetcodeApril.DiameterOfBinaryTree;
+import leetcode.april.DiameterOfBinaryTree;
 import org.junit.Before;
 import org.junit.Test;
-import leetcodeApril.DiameterOfBinaryTree.TreeNode;
+import leetcode.april.DiameterOfBinaryTree.TreeNode;
 
 /**
  *      1

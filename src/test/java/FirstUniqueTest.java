@@ -1,4 +1,4 @@
-import leetcodeApril.FirstUnique;
+import leetcode.april.FirstUnique;
 import org.junit.Test;
 
 public class FirstUniqueTest {

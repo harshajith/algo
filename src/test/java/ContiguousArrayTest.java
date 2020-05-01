@@ -1,4 +1,4 @@
-import leetcodeApril.ContiguousArray;
+import leetcode.april.ContiguousArray;
 import org.junit.Before;
 import org.junit.Test;
 

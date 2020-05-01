@@ -1,4 +1,4 @@
-import leetcodeApril.MinimumPathSum;
+import leetcode.april.MinimumPathSum;
 import org.junit.Before;
 import org.junit.Test;
 

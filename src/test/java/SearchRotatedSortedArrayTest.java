@@ -1,4 +1,4 @@
-import leetcodeApril.SearchRotatedSortedArray;
+import leetcode.april.SearchRotatedSortedArray;
 import org.junit.Test;
 
 public class SearchRotatedSortedArrayTest {

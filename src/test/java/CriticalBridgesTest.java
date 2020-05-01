@@ -1,4 +1,4 @@
-import leetcode.CriticalBridgesGraph;
+import leetcode.random.CriticalBridgesGraph;
 import org.junit.Test;
 
 import java.util.ArrayList;

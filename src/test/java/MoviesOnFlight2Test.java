@@ -1,4 +1,4 @@
-import leetcode.MoviesOnFlight2;
+import leetcode.random.MoviesOnFlight2;
 import org.junit.Test;
 
 import java.util.List;

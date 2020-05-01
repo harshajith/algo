@@ -1,4 +1,4 @@
-import leetcode.SubArraySumEqualsK;
+import leetcode.random.SubArraySumEqualsK;
 import org.junit.Test;
 
 public class SubArraySumEqualsKTest {

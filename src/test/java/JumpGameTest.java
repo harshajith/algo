@@ -1,4 +1,4 @@
-import leetcodeApril.JumpGame;
+import leetcode.april.JumpGame;
 import org.junit.Test;
 
 public class JumpGameTest {

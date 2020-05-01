@@ -1,4 +1,4 @@
-import leetcode.LongestCommonSubsequence;
+import leetcode.random.LongestCommonSubsequence;
 import org.junit.Test;
 
 public class LCSTest {

@@ -1,4 +1,4 @@
-import leetcodeApril.LastStoneWeight;
+import leetcode.april.LastStoneWeight;
 import org.junit.Test;
 
 public class LastStoneWeightTest {

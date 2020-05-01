@@ -1,4 +1,4 @@
-import leetcodeApril.MinStack;
+import leetcode.april.MinStack;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,5 +1,5 @@
-import leetcodeApril.LRUCache;
-import leetcodeApril.LRUCacheWithLinkedHashMap;
+import leetcode.april.LRUCache;
+import leetcode.april.LRUCacheWithLinkedHashMap;
 import org.junit.Test;
 
 public class LRUCacheTest {
