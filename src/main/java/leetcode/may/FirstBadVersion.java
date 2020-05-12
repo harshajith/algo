@@ -28,6 +28,12 @@ public class FirstBadVersion {
         return badVersion;
     }
 
+    /**
+     * log(n) time complexity.
+     * @param n
+     * @param left
+     * @param right
+     */
     public void badVersion(int n, int left, int right){
         if(left > right) return;
 

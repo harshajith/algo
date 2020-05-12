@@ -32,61 +32,62 @@ public class LogFiles {
 
 
     public static void main(String[] args){
-        String[] input = new String[]{"t kvr", "r 3 1", "i 403", "7 so", "t 54"};
-        String[] output = reorderLogFiles(input);
+        List<String> input = Arrays.asList("al 9 2 3 1", "gl act car", "zo4 4 7", "ab1 off key dog", "a8 act zoo");
+        List<String> output = reorderLogFiles(input);
 
-        for(int i=0; i<output.length; i++){
-            System.out.println(output[i]);
+        for(String str: output){
+            System.out.println(output);
         }
     }
 
-    private static Comparator<String[]> comparator = new Comparator<String[]>() {
-        @Override
-        public int compare(String[] o1, String[] o2) {
-            for(int i=1; i<o1.length && i<o2.length; i++){
-                if(o1[i].equals(o2[i])) {
-                    continue;
-                }else {
-                    return o1[i].compareTo(o2[i]);
+
+    public static List<String> reorderLogFiles(List<String> logLines){
+        if(logLines.size() > 100) throw new RuntimeException("Logs are above 100");
+
+
+        Comparator<String> comparator = new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                String[] a1 = o1.split(" ");
+                String[] a2 = o2.split(" ");
+
+                for(int i=1; i<a1.length && i<a2.length; i++){
+                    if(a1[i].equals(a2[i])) {
+                        continue;
+                    }else {
+                        return a1[i].compareTo(a2[i]);
+                    }
                 }
+                return a1[0].compareTo(a2[0]);
             }
-            return o1[0].compareTo(o2[0]);
-        }
-    };
-
-    public static String[] reorderLogFiles(String[] logs){
-        if(logs.length > 100) throw new RuntimeException("Logs are above 100");
-
+        };
         int front = 0;
-        int length = logs.length;
+        int length = logLines.size();
+        List<String> result = new ArrayList<>();
 
-        List<String[]> sortable = new ArrayList<>();
+        List<String> sortable = new ArrayList<>();
         List<String> arrayWithDigits = new ArrayList<>();
 
-        for(int i=0; i<length; i++){
-            String log = logs[i];
+        for(String log: logLines){
             String[] entries = log.split(" ");
-
-
             if(checkIfDigit(entries[1])){
                 arrayWithDigits.add(log);
             }else {
-                sortable.add(entries);
+                sortable.add(log);
             }
         }
 
         Collections.sort(sortable, comparator);
-
-        for(int i=0; i<sortable.size();i++){
-            logs[i] = String.join(" ", sortable.get(i));
+        for(String str: sortable){
+            result.add(str);
         }
-        for(int i=0; i<arrayWithDigits.size(); i++){
-            logs[i+sortable.size()] = arrayWithDigits.get(i);
+        for(String str: arrayWithDigits){
+            result.add(str);
         }
-        return logs;
+        return result;
     }
 
-    private static boolean checkIfDigit(String a){
+    public static boolean checkIfDigit(String a){
         try{
             Integer.valueOf(a);
             return true;

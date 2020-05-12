@@ -1,12 +1,12 @@
 package leetcode.random;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Given 2 lists a and b. Each element is a pair of integers where the first integer represents the unique id and the second integer represents a value. Your task is to find an element from a and an element form b such that the sum of their values is less or equal to target and as close to target as possible. Return a list of ids of selected elements. If no pair is possible, return an empty list.
+ * Given 2 lists a and b. Each element is a pair of integers where the first integer represents the unique id and the second integer represents a value.
+ * Your task is to find an element from a and an element form b such that the sum of their values is
+ * less or equal to target and as close to target as possible.
+ * Return a list of ids of selected elements. If no pair is possible, return an empty list.
  *
  * Example 1:
  *
@@ -28,6 +28,7 @@ public class TwoSumOnList {
         Map<Integer, Integer> bMap = new HashMap<>();
 
         List<List<Integer>> result = new ArrayList<>();
+        int closestSum = Integer.MIN_VALUE;
 
         for(List<Integer> l : a){
             aMap.put(l.get(1), l.get(0));
@@ -39,11 +40,9 @@ public class TwoSumOnList {
         for(Integer aVal: aMap.keySet()){
             for(Integer bval: bMap.keySet()){
                 int x = aVal + bval;
-                if(x <= total) {
-                    List<Integer> index = new ArrayList<>();
-                    index.add(aMap.get(aVal));
-                    index.add(bMap.get(bval));
-                    result.add(index);
+                if(x <= total && x > closestSum) {
+                    closestSum = x;
+                    result.add(Arrays.asList(aMap.get(aVal), bMap.get(bval)));
                 }
             }
         }
