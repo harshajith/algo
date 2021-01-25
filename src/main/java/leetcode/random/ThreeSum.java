@@ -25,10 +25,10 @@ public class ThreeSum {
 
             while(j<k){
 
-                if(k < input.length -1 && input[k] == input[k+1]){
-                    k--;
-                    continue;
-                }
+//                if(k < input.length -1 && input[k] == input[k+1]){
+//                    k--;
+//                    continue;
+//                }
 
                 int sum = input[i] + input[j] + input[k];
                 int diff = sum - total;

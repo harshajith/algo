@@ -12,23 +12,23 @@ public class Solution {
     public boolean isBST(TreeNode tree, int min, int max){
         if(tree == null) return true;
 
-        if(tree.X < min || tree.X > max){
+        if(tree.val < min || tree.val > max){
             return false;
         }
 
-        return isBST(tree.l, min, tree.X -1) && isBST(tree.r, tree.X +1, max);
+        return isBST(tree.l, min, tree.val -1) && isBST(tree.r, tree.val +1, max);
 
     }
 
     public int solution(TreeNode t){
         Stack<TreeNode> stack = new Stack();
         int count = 0;
-        int rootValue = t.X;
+        int rootValue = t.val;
         stack.push(t);
 
         while(!stack.isEmpty()){
             TreeNode current = stack.pop();
-            if(current.X > rootValue){
+            if(current.val > rootValue){
                 count++;
             }
             if(current.r != null){

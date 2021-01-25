@@ -1,7 +1,5 @@
 package com.harsha.cs.treechallenge;
 
-import java.util.Queue;
-
 public class BFS {
 
     int[] queue;
@@ -33,17 +31,17 @@ public class BFS {
     }
 
     public void searchBFS(TreeNode node){
-        this.enqueue(node.X);
+        this.enqueue(node.val);
 
         while(!this.isEmpty()){
             int n = this.dequeue();
             System.out.println(n);
 
             if(node.r != null){
-                this.enqueue(node.r.X);
+                this.enqueue(node.r.val);
             }
             if(node.l != null){
-                this.enqueue(node.l.X);
+                this.enqueue(node.l.val);
             }
         }
     }
