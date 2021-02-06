@@ -1,18 +1,8 @@
-package leetcode.atlassian;
+package leetcode.jan;
 
 import java.util.*;
 
 /**
- * 1366. Rank Teams by Votes
- * Medium
- *
- * 361
- *
- * 49
- *
- * Add to List
- *
- * Share
  * In a special ranking system, each voter gives a rank from highest to lowest to all teams participated in the competition.
  *
  * The ordering of teams is decided by who received the most position-one votes. If two or more teams tie in the first position, we consider the second position to resolve the conflict, if they tie again, we continue this process until the ties are resolved. If two or more teams are still tied after considering all positions, we rank them alphabetically based on their team letter.
@@ -50,41 +40,79 @@ import java.util.*;
  * Team B was ranked first by 2 voters, second by 2 voters and third by 2 voters.
  * Team C was ranked first by 2 voters, second by 2 voters and third by 2 voters.
  * There is a tie and we rank teams ascending by their IDs.
- * Example 5:
- *
- * Input: votes = ["M","M","M","M"]
- * Output: "M"
- * Explanation: Only team M in the competition so it has the first rank.
- *
- *
- * Constraints:
- *
- * 1 <= votes.length <= 1000
- * 1 <= votes[i].length <= 26
- * votes[i].length == votes[j].length for 0 <= i, j < votes.length.
- * votes[i][j] is an English upper-case letter.
- * All characters of votes[i] are unique.
- * All the characters that occur in votes[0] also occur in votes[j] where 1 <= j < votes.length.
- * Accepted
- * 17,413
- * Submissions
- * 31,675
  */
 public class RankTeams {
 
-    public String rankTeams(String[] votes) {
-        Map<Character, int[]> charVotesMap = new HashMap<>();
-        for(String vote: votes){
+    /**
+     *
+     * A : [4, 2, 0]
+     * B : [3, 3, 2]
+     * C : [2, 2, 3]
+     * @param votes
+     * @return
+     */
+    public String rankTeams1(String[] votes) {
+        if(votes == null || votes.length < 1) return "";
+        Map<Character, int[]> rankMap = new HashMap<>();
+        for(String vote: votes){ // Iterate through each vote "ABC"
             for(int i=0; i<vote.length(); i++){
-                int[] charVotes = charVotesMap.getOrDefault(vote.charAt(i), new int[vote.length()]);
-                charVotes[i]++;
+                char c = vote.charAt(i); // vote char in position i
+                int[] positionVotes = rankMap.getOrDefault(c, new int[vote.length()]); // get position votes array for the current Char
+                positionVotes[i]++; // increment the position votes
+                rankMap.put(c, positionVotes);
             }
         }
 
-        ArrayList<Character> charList = new ArrayList<>(charVotesMap.keySet());
-        Comparator<Character> comparator = (a, b) -> {
-            int[] v1 = charVotesMap.get(a);
-            int[] v2 = charVotesMap.get(b);
+        Comparator<Character> comparator = new Comparator<Character>() {
+            @Override
+            public int compare(Character o1, Character o2) {
+                int[] a = rankMap.get(o1);
+                int[] b = rankMap.get(o2);
+                for(int i=0; i< a.length; i++){
+                    if(a[i] != b[i]){
+                        return b[i] - a[i];
+                    }
+                }
+                return 0;
+            }
+        };
+
+        ArrayList<Character> charArray = new ArrayList<>(rankMap.keySet());
+        Collections.sort(charArray, comparator);
+        String result = "";
+        for(Character c: charArray){
+            result += c;
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public String rankTeams(String[] votes) {
+        Map<Character, int[]> ranks = new HashMap<>(); // Charater and their ranking array.
+        for(String vote: votes){
+            for(int i=0; i< vote.length(); i++){
+                char c = vote.charAt(i);
+                int[] charRanks = ranks.getOrDefault(c, new int[vote.length()]);
+                charRanks[i]++;
+                ranks.put(c, charRanks);
+            }
+        }
+
+        Comparator<Character> comparator = (o1, o2) -> {
+            int[] v1 = ranks.get(o1);
+            int[] v2 = ranks.get(o2);
             for(int i=0; i<v1.length; i++){
                 if(v1[i] != v2[i]){
                     return v2[i] - v1[i];
@@ -93,12 +121,14 @@ public class RankTeams {
             return 0;
         };
 
+        List<Character> charList = new ArrayList<>(ranks.keySet());
         Collections.sort(charList, comparator);
-        String result = "";
-        for(Character c: charList){
-            result += c;
-        }
-        return result;
 
+        StringBuilder sb = new StringBuilder();
+        for(Character c: charList){
+            sb.append(c);
+        }
+
+        return sb.toString();
     }
 }

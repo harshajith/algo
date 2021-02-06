@@ -34,6 +34,33 @@ package leetcode.jan;
  */
 public class ArrangeCoins {
 
+    public int arrangeCoins1(int n) {
+        int steps = 0;
+        while(n >= steps+1){
+            n = n - ++steps;
+        }
+        return steps;
+    }
+
+
+    public int arrangeCoins2(int n) {
+        if(n < 1) return 0;
+        return countSteps(n, 1);
+    }
+
+    /**
+     *
+     * @param n
+     * @param steps
+     * @return
+     */
+    private int countSteps(int n, int steps) {
+        if(n < steps){
+            return steps-1;
+        }
+        return countSteps(n-steps, steps+1);
+    }
+
 
     public int arrangeCoins(int n) {
 
@@ -52,7 +79,7 @@ public class ArrangeCoins {
     }
     public static void main(String[] args){
         ArrangeCoins ac = new ArrangeCoins();
-        System.out.println(ac.arrangeCoins(14));
+        System.out.println(ac.arrangeCoins2(14));
     }
 
 }

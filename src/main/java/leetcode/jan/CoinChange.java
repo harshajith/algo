@@ -53,21 +53,32 @@ public class CoinChange {
 
     public static void main(String[] args){
         CoinChange coinChange = new CoinChange();
-        int[] coins = new int[]{1};
-        System.out.println(coinChange.coinChange(coins, 1));
+        int[] coins = new int[]{1,2,5};
+        System.out.println(coinChange.changeCoins( 9,coins));
     }
-    public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount+1];
-        Arrays.fill(dp, amount + 1);
+
+    /**
+     * Runtime :
+     * Time complexity: O(n * m) ~ O(n2)
+     * Space complexity: O(n)
+     * @param val
+     * @param coins
+     * @return
+     */
+    public int changeCoins(int val, int[] coins){
+        int[] dp = new int[val+1]; // hold the minimum number of coins required to make the amount
+        Arrays.fill(dp, val+1);
+
         dp[0] = 0;
-        for(int i=1; i<=amount; i++){
+        for(int i=1; i<=val; i++){
             for(int j=0; j<coins.length; j++){
                 if(coins[j] <= i){
-                    dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
+                    int rem = i - coins[j];
+                    dp[i] = Math.min(dp[i], 1 + dp[rem]);
                 }
             }
         }
-        if(dp[amount] > amount) return -1;
-        return dp[amount];
+        if(dp[val] > val) return -1;
+        return dp[val];
     }
 }
