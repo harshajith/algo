@@ -12,25 +12,25 @@ public class LongestPelindromeTest {
 
     @Test
     public void testPelindrom(){
-        String result = longestPelindrom.longestPalindrome("abba");
+        String result = longestPelindrom.longestPalindromeNew("abba");
         assert result.equals("abba");
     }
 
     @Test
     public void testPelindrom2(){
-        String result = longestPelindrom.longestPalindrome("cbba");
+        String result = longestPelindrom.longestPalindromeNew("cbba");
         assert result.equals("bb");
     }
 
     @Test
     public void testPelindrom3(){
-        String result = longestPelindrom.longestPalindrome("a");
+        String result = longestPelindrom.longestPalindromeNew("a");
         assert result.equals("a");
     }
 
     @Test
     public void testPelindrom4(){
-        String result = longestPelindrom.longestPalindrome("ac");
+        String result = longestPelindrom.longestPalindromeNew("ac");
         assert result.equals("c");
     }
 }

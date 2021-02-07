@@ -38,9 +38,53 @@ package leetcode.atlassian;
 public class MinTapsToOpenWaterGarden {
 
     public static void main(String[] args){
-        int[] ranges = new int[]{1,2,1,0,2,1,0,1};
-        System.out.println(minTaps(7, ranges));
+        int[] ranges = new int[]{3,4,1,1,0,0};
+        System.out.println(minTaps1(5, ranges));
     }
+
+    public static int minTaps1(int n, int[] ranges) {
+        int[] maxRanges = new int[ranges.length];
+        for(int i=0; i<ranges.length; i++){
+            int left = i - ranges[i];
+            int right = i + ranges[i];
+            if(left >= 0) {
+                maxRanges[left] = Math.max(maxRanges[left], right); // update the max length that can be be covered at left index.
+            }else {
+                maxRanges[i] = right;
+            }
+        }
+        int taps = 1;
+        int prev = 0;
+        while(prev <= n){
+            int range = maxRanges[prev];
+            if(range <= n) {
+                int maxIndex = 0, length = range;
+                for(int i=prev; i<=range; i++){
+                    if(maxRanges[i] > length){
+                        length = maxRanges[i];
+                        maxIndex = i;
+                    }
+                }
+                prev = maxIndex;
+                taps++;
+            }else {
+                return taps;
+            }
+        }
+        return -1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public static int minTaps(int n, int[] ranges) {
         int[] maxjump= new int[ranges.length];
         for(int i=0; i<ranges.length; i++){

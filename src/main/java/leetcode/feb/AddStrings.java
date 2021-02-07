@@ -31,7 +31,7 @@ public class AddStrings {
 
     public static void main(String[] args){
         AddStrings addStrings = new AddStrings();
-        String result = addStrings.addStrings("9", "99");
+        String result = addStrings.addStrings("9", "99776");
         System.out.println(result);
     }
 
@@ -50,39 +50,24 @@ public class AddStrings {
             int n1 = c1[i] - '0';
             int n2 = c2[j] - '0';
             int sum = n1 + n2 + remain;
-            if(sum > 9){
-                remain = 1;
-                String tmp = String.valueOf(sum);
-                result.add(tmp.substring(1));
-            }else {
-                if(remain == 1) remain = 0;
-                result.add(String.valueOf(sum));
-            }
+            remain = sum / 10;
+            int val = sum % 10;
+            result.add("" + val);
             i--;
             j--;
         }
         while(i >= 0){
             int sum = remain + (c1[i] -  '0');
-            if(sum > 9){
-                remain = 1;
-                String tmp = String.valueOf(sum);
-                result.add(tmp.substring(1));
-            }else {
-                if(remain == 1) remain = 0;
-                result.add(String.valueOf(sum));
-            }
+            remain = sum / 10;
+            int val = sum % 10;
+            result.add("" + val);
             i--;
         }
         while(j >= 0){
             int sum = remain + (c2[j] -  '0');
-            if(sum > 9){
-                remain = 1;
-                String tmp = String.valueOf(sum);
-                result.add(tmp.substring(1));
-            }else {
-                if(remain == 1) remain = 0;
-                result.add(String.valueOf(sum));
-            }
+            remain = sum / 10;
+            int val = sum % 10;
+            result.add("" + val);
             j--;
         }
         if(remain == 1) result.add("1");
