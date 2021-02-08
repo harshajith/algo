@@ -34,8 +34,7 @@ public class ShortestDistanceToCharacter {
      * @return
      */
     public int[] shortestToChar(String s, char c) {
-        int[] result = new int[s.length()];
-        Arrays.fill(result, s.length()+1);
+        int[] result = new int[s.length()];        Arrays.fill(result, s.length()+1);
         char[] arr = s.toCharArray();
         int lastFoundLocation = -1;
         for(int i=0; i<arr.length; i++){
