@@ -1,4 +1,4 @@
-package com.harsha.cs.leetcode.atlassian;
+package com.harsha.cs.leetcode.feb;
 
 import leetcode.atlassian.ShortestDistanceToCharacter;
 import org.junit.Test;

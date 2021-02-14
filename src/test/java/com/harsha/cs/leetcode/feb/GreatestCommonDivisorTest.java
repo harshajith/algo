@@ -1,6 +1,6 @@
 package com.harsha.cs.leetcode.feb;
 
-import leetcode.feb.GreatestCommonDivisorOfStrings;
+import leetcode.atlassian.GreatestCommonDivisorOfStrings;
 import org.junit.Test;
 
 public class GreatestCommonDivisorTest {
