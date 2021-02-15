@@ -64,7 +64,31 @@ package leetcode.atlassian;
 public class LemonadeChange {
 
     public boolean lemonadeChange(int[] bills) {
-
+        int[] arr = new int[3]; // int[0] - no of 5 bills, int[1] = no of 10 bills, int[2] - no of 20 bills
+        if(bills[0] != 5) return false; // no change at the start.
+        for(int i=0; i<bills.length; i++){
+            switch (bills[i]){
+                case 5:
+                    arr[0]++;
+                    break;
+                case 10:
+                    arr[0]--;
+                    arr[1]++;
+                    if(arr[0] < 0) return false;
+                    break;
+                case 20:
+                    if(arr[0] > 4) {
+                        arr[0] -= 3;
+                    }else {
+                        arr[1]--;
+                        arr[0]--;
+                    }
+                    arr[2]++;
+                    if(arr[0] < 0 || arr[1] < 0) return false;
+                    break;
+            }
+        }
+        return true;
     }
 
 }
